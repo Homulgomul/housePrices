@@ -3,7 +3,7 @@ import sklearn.preprocessing as preprocessing
 import sklearn.impute as impute
 
 #define pipeline for preprocessing as function
-def preprocess(data):
+def Pipeline(data):
     data = pd.get_dummies(data)
     data['LotFrontage'] = data['LotFrontage'].fillna(0)
     imputer = impute.KNNImputer(n_neighbors=5)
