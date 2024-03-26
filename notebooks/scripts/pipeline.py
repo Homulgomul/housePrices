@@ -10,4 +10,5 @@ def Pipeline(data):
     data = pd.DataFrame(imputer.fit_transform(data), columns=data.columns)
     scaler = preprocessing.StandardScaler()
     data = pd.DataFrame(scaler.fit_transform(data), columns=data.columns)
+    data = pd.DataFrame(preprocessing.PolynomialFeatures(degree=2, include_bias=False).fit_transform(data))
     return data
