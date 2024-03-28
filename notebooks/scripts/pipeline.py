@@ -1,6 +1,7 @@
 import pandas as pd
 import sklearn.preprocessing as preprocessing
 import sklearn.impute as impute
+from sklearn.decomposition import PCA
 
 #define pipeline for preprocessing as function
 def Pipeline(data):
@@ -10,4 +11,6 @@ def Pipeline(data):
     data = pd.DataFrame(imputer.fit_transform(data), columns=data.columns)
     scaler = preprocessing.StandardScaler()
     data = pd.DataFrame(scaler.fit_transform(data), columns=data.columns)
+    pca = PCA(n_components='mle')
+    data = pd.DataFrame(pca.fit_transform(data))
     return data
